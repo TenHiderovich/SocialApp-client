@@ -5,9 +5,9 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 // Pages
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import SingupPage from './pages/SingupPage';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Singup from './pages/Singup';
 
 // Components
 import NavbarElem from './components/NavbarElem';
@@ -42,9 +42,9 @@ class App extends Component {
             <NavbarElem/>
             <div className="container">
               <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/login" component={LoginPage}/>
-                <Route exact path="/singup" component={SingupPage}/>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/singup" component={Singup}/>
               </Switch>
             </div>
           </Router>

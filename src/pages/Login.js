@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppIcon from '../images/monkey.png'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // MUI stuff
 import whithStyles from '@material-ui/core/styles/withStyles';
@@ -9,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = {
   form: {
@@ -26,7 +28,17 @@ const styles = {
     margin: '10px auto 10px auto'
   },
   button: {
-    marginTop: 20
+    marginTop: 20,
+    marginBottom: 10,
+    position: 'relative'
+  },
+  customError: {
+    color: 'red',
+    fontSize: '0.8rem',
+    marginTop: 10
+  },
+  progress: {
+    position: 'absolute'
   }
 }
 
@@ -52,11 +64,10 @@ class LoginPage extends Component {
     };
     axios.post('/login', userData)
       .then(res => {
-        console.log(res.data);
         this.setState({
           loading: false
         });
-        this.props.history.push('/')
+        this.props.history.push('/');
       })
       .catch(err => {
         this.setState({
@@ -106,14 +117,23 @@ class LoginPage extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth />
+              {errors.general && (
+                <Typography variant="body2" className={classes.customError}>
+
+                </Typography>
+              )}
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 className={classes.button}
+                disabled={loading}
                 >
                   Login
+                  {loading && (<CircularProgress size={30} className={classes.progress}/>)}
                 </Button>
+                <br />
+                <small>dont have an account? Sing Up <Link to="/singup">here</Link> </small>
             </form>
         </Grid>
         <Grid item sm />

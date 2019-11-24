@@ -24,7 +24,7 @@ class HomePage extends Component {
   render() {
     let recntScremsMarkup = this.state.screams ? (
       this.state.screams.map(scream => <ScreamItem key={scream.screamId} scream={scream}/>)
-    ) : <p>Loading...</p>
+    ) : <p>Loading...</p>;
     return (
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
