@@ -76,7 +76,7 @@ class Singup extends Component {
       })
       .catch(err => {
         this.setState({
-          error: err.response.data,
+          errors: err.response.data,
           loading: false
         });
       })
