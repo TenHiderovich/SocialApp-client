@@ -40,9 +40,9 @@ const styles = {
   progress: {
     position: 'absolute'
   }
-}
+};
 
-class LoginPage extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -64,6 +64,7 @@ class LoginPage extends Component {
     };
     axios.post('/login', userData)
       .then(res => {
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
@@ -119,7 +120,7 @@ class LoginPage extends Component {
               fullWidth />
               {errors.general && (
                 <Typography variant="body2" className={classes.customError}>
-
+                  {errors.general}
                 </Typography>
               )}
               <Button
@@ -142,8 +143,8 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.propTypes = {
+Login.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default whithStyles(styles)(LoginPage);
+export default whithStyles(styles)(Login);
