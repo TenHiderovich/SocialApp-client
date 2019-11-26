@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
     SET_USER,
     SET_ERRORS,
@@ -5,7 +7,7 @@ import {
     LOADING_UI
 } from '../types';
 
-export const loginUser = (userDate, history) => (dispatch) => {
+export const loginUser = (userData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI });
     axios.post('/login', userData)
         .then(res => {
