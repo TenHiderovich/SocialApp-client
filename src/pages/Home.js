@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 class HomePage extends Component {
   state = {
     screams: null
-  }
+  };
 
   componentDidMount() {
     axios.get('/screams')
