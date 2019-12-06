@@ -24,7 +24,6 @@ import AuthRoute from './util/AuthRoute'
 
 const theme = createMuiTheme(themeFile);
 
-let authenticated;
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);

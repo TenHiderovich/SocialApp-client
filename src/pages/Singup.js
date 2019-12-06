@@ -43,7 +43,7 @@ const styles = {
   progress: {
     position: 'absolute'
   }
-}
+};
 
 class Singup extends Component {
   constructor() {
@@ -111,7 +111,8 @@ class Singup extends Component {
               error={errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+              autoComplete="on"/>
             <TextField
               id="confirmPassword"
               name="confirmPassword"
@@ -163,7 +164,7 @@ Singup.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  signupUser: PropTypes.object.isRequired
+  signupUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

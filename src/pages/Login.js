@@ -55,7 +55,7 @@ class Login extends Component {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
@@ -109,7 +109,8 @@ class Login extends Component {
               error={errors.password ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+              autoComplete="on"/>
               {errors.general && (
                 <Typography variant="body2" className={classes.customError}>
                   {errors.general}
