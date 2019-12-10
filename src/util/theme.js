@@ -50,21 +50,30 @@ export default {
         marginBottom: 20
     },
     paper: {
+        width: 300,
         padding: 20
     },
     profile: {
         '& .image-wrapper': {
+            width: 150,
+            height: 150,
+            overflow: 'hidden',
+            // borderRadius: '50%',
             textAlign: 'center',
             position: 'relative',
+            margin: '0 auto',
             '& button': {
                 position: 'absolute',
-                top: '80%',
-                left: '70%'
+                bottom: 0,
+                right: 0,
+                opacity: 0
+            },
+            '&:hover  button': {
+                opacity: 1
             }
         },
         '& .profile-image': {
-            width: 200,
-            height: 200,
+            width: '100%',
             objectFit: 'cover',
             maxWidth: '100%',
             borderRadius: '50%'
