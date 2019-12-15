@@ -12,6 +12,10 @@ html, body {
   margin: auto;
 }
 
+.nav-container svg {
+  fill: #fff;
+}
+
 a {
   text-decoration: none;
 }

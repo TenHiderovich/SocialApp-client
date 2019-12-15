@@ -19,7 +19,7 @@ import Login from './pages/Login';
 import Singup from './pages/Singup';
 
 // Components
-import NavbarElem from './components/NavbarElem';
+import Navbar from './components/Navbar';
 import AuthRoute from './util/AuthRoute'
 
 const theme = createMuiTheme(themeFile);
@@ -43,7 +43,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
           <Router>
-            <NavbarElem/>
+            <Navbar/>
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Home}/>
