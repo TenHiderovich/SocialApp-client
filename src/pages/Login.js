@@ -148,8 +148,4 @@ const mapStateToProps = (state) => ({
   UI: state.UI
 });
 
-const mapActionsToProps = {
-  loginUser
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(whithStyles(styles)(Login));
+export default connect(mapStateToProps, { loginUser })(whithStyles(styles)(Login));
