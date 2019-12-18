@@ -29,7 +29,7 @@ export const getScreams = () => dispatch => {
 // Like a scream
 export const likeScream = (screamId) => dispatch => {
     axios
-        .get(`scream/${screamId}/like`)
+        .get(`screams/${screamId}/like`)
         .then(res => {
             dispatch({
                 type: LIKE_SCREAM,
@@ -42,7 +42,7 @@ export const likeScream = (screamId) => dispatch => {
 // Unlike a scream
 export const unlikeScream = (screamId) => dispatch => {
     axios
-        .get(`scream/${screamId}/unlike`)
+        .get(`screams/${screamId}/unlike`)
         .then(res => {
             dispatch({
                 type: UNLIKE_SCREAM,
