@@ -107,7 +107,6 @@ class Profile extends Component {
                 authenticated
             }
         } = this.props;
-
         const profileMarkuo = !loading ? (authenticated ? (
             <Paper className={classes.paper}>
                 <div className={classes.profile}>

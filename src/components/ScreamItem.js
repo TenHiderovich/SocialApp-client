@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 import MyButton from "../util/MyButton";
+import DeleteScream from "./DeleteScream";
 
 // MUI stuff
 import Card from '@material-ui/core/Card';
@@ -24,7 +25,7 @@ const styles = {
   card: {
     display: 'flex',
     marginBottom: 20,
-
+    position: 'relative'
   },
   image: {
     minWidth: 200,
@@ -55,68 +56,73 @@ class ScreamItem extends Component {
   };
 
   render() {
-    dayjs.extend(relativeTime);
-    const {
-      classes,
-      scream: {
-        userImage,
-        body,
-        createdAt,
-        userHandle,
-        sreamId,
-        likeCount,
-        commentCount
-      },
-      user: {
-        authenticated
-      }
-    } = this.props;
-    const likeButton = !authenticated ? (
-        <MyButton tip="Like">
-          <Link to="/login">
-            <FavoriteBorder color="primary"/>
-          </Link>
-        </MyButton>
-    ) : (
-      this.likedScream() ? (
-          <MyButton tip="Undo like" onClick={this.unlikeScream}>
-            <FavoriteIcon color="primary"/>
+      dayjs.extend(relativeTime);
+      const {
+          classes,
+          scream: {
+              userImage,
+              body,
+              createdAt,
+              userHandle,
+              screamId,
+              likeCount,
+              commentCount
+          },
+          user: {
+              authenticated,
+              credentials: { handle }
+          }
+      } = this.props;
+      const likeButton = !authenticated ? (
+          <MyButton tip="Like">
+            <Link to="/login">
+              <FavoriteBorder color="primary"/>
+            </Link>
           </MyButton>
       ) : (
-          <MyButton tip="Like" onClick={this.likeScream}>
-            <FavoriteBorder color="primary"/>
-          </MyButton>
-      )
-    );
-    return (
-      <div>
-        <Card className={classes.card}>
-          <CardMedia image={userImage} title="Profile image" className={classes.image}></CardMedia>
-          <CardContent className={classes.content}>
-            <Typography
-              variant="h5"
-              component={Link}
-              to={`/users/${userHandle}`}
-              color="primary"
-              >
-              {userHandle}
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              {dayjs(createdAt).fromNow()}
-            </Typography>
-            <Typography variant="body1">
-              {body}
-            </Typography>
-            {likeButton}
-            <span>{likeCount} Likes</span>
-            <MyButton tip="comments">
-              <ChatIcon color="primary"/>
+        this.likedScream() ? (
+            <MyButton tip="Undo like" onClick={this.unlikeScream}>
+              <FavoriteIcon color="primary"/>
             </MyButton>
-            <span>{commentCount} comments</span>
-          </CardContent>
-        </Card>
-      </div>
-    )
+        ) : (
+            <MyButton tip="Like" onClick={this.likeScream}>
+              <FavoriteBorder color="primary"/>
+            </MyButton>
+        )
+      );
+      const deleteButton = authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId}/>
+      ) : null;
+      return (
+        <div>
+          <Card className={classes.card}>
+            <CardMedia image={userImage} title="Profile image" className={classes.image}></CardMedia>
+            <CardContent className={classes.content}>
+              <Typography
+                variant="h5"
+                component={Link}
+                to={`/users/${userHandle}`}
+                color="primary"
+                >
+                {userHandle}
+              </Typography>
+              {deleteButton}
+              <Typography variant="body2" color="textSecondary">
+                {dayjs(createdAt).fromNow()}
+              </Typography>
+              <Typography variant="body1">
+                {body}
+              </Typography>
+              {likeButton}
+              <span>{likeCount} Likes</span>
+              <MyButton tip="comments">
+                <ChatIcon color="primary"/>
+              </MyButton>
+              <span>{commentCount} comments</span>
+            </CardContent>
+          </Card>
+        </div>
+      )
   }
 }
 
