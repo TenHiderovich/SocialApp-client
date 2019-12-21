@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from "@material-ui/core/styles/withStyles";
-// import theme from "../util/theme";
+import MyButton from "../util/MyButton";
 
 // MUI stuff
 import Tooltip from '@material-ui/core/Tooltip';
@@ -19,7 +19,7 @@ import EditIcon from '@material-ui/icons/Edit';
 // Redux
 import {connect} from "react-redux";
 import { editUserDetails } from "../redux/actions/userActions";
-import MyButton from "../util/MyButton";
+
 
 const styles = {
     button: {

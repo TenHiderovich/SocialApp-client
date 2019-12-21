@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import PostScream from "./PostScream";
 import MyButton from "../util/MyButton";
 
 // MUI stuff
@@ -10,9 +11,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
 // Icons
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+
 
 class Navbar extends Component {
   render() {
@@ -22,9 +23,7 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           { authenticated ? (
               <Fragment>
-                <MyButton tip="Post a Scream!">
-                    <AddIcon/>
-                </MyButton>
+                <PostScream/>
                 <Link to="/">
                     <MyButton tip="Home">
                         <HomeIcon/>
