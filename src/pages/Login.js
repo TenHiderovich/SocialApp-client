@@ -110,7 +110,7 @@ class Login extends Component {
                             value={this.state.password}
                             onChange={this.handleChange}
                             fullWidth
-                            autoComplete="on" EditDetails/>
+                            autoComplete="on"/>
                         {errors.general && (
                             <Typography variant="body2" className={classes.customError}>
                                 {errors.general}
