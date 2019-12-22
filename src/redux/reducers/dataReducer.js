@@ -4,7 +4,8 @@ import {
     LIKE_SCREAM,
     UNLIKE_SCREAM,
     DELETE_SCREAM,
-    POST_SCREAM
+    POST_SCREAM,
+    CLEAR_ERRORS
 } from "../types";
 
 const initialState = {
@@ -52,6 +53,7 @@ export default function (state = initialState, action) {
                     ...state.screams
                 ],
             };
+
         default:
             return state;
     }
